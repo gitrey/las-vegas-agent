@@ -1,0 +1,9 @@
+.gcloudignore
+.git
+.gitignore
+node_modules
+dist
+.env
+.DS_Store
+.dockerignore
+# Dockerfile should NOT be ignored if we want Cloud Build to use it
