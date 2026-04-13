@@ -179,6 +179,15 @@ gcloud run deploy las-vegas-agent \
   --set-secrets GEMINI_API_KEY=gemini-api-key:latest
 ```
 
+## Configuring as a Remote Subagent
+
+To use this agent as a remote subagent in another project (like
+`terminal-velocity`), follow the steps to configure a remote agent in the
+[terminal-velocity repository](https://github.com/dekwan/terminal-velocity/tree/main/tasks-with-subagents).
+
+This allows the Gemini CLI to discover the agent and route requests to it when
+you use the `@las-vegas-agent` mention in prompts.
+
 ### Sample prompts
 
 Here are some sample prompts to test the agent's capabilities, along with
