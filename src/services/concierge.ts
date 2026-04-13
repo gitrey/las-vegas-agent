@@ -10,7 +10,7 @@ export class ConciergeService {
     constructor() {
         this.agent = new LlmAgent({
             name: 'las_vegas_concierge',
-            model: 'gemini-2.0-flash', 
+            model: 'gemini-3.1-flash-lite-preview', 
             description: 'A specialized Las Vegas expert concierge.',
             instruction: systemInstruction,
             tools: [GOOGLE_SEARCH],
@@ -48,6 +48,7 @@ export class ConciergeService {
 
         let finalText = '';
         for await (const event of eventGenerator) {
+            console.log('Received event:', JSON.stringify(event));
             if (isFinalResponse(event)) {
                 const parts = event.content?.parts || [];
                 finalText = parts.map(p => p.text || '').join('');
