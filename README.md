@@ -114,7 +114,7 @@ To build the image and deploy the service in one step:
 gcloud run deploy las-vegas-agent \
   --source . \
   --region us-central1 \
-  --allow-unauthenticated
+  --no-allow-unauthenticated
 ```
 
 This command will build the container image using Cloud Build and deploy it to
@@ -174,16 +174,28 @@ Update the deployment command to mount the secret as an environment variable:
 gcloud run deploy las-vegas-agent \
   --source . \
   --region us-central1 \
-  --allow-unauthenticated \
+  --no-allow-unauthenticated \
   --set-env-vars SERVICE_URL=$SERVICE_URL \
   --set-secrets GEMINI_API_KEY=gemini-api-key:latest
+```
+
+### Grant invoker access
+
+Grant invoker access to the Cloud Run service for your user account:
+
+```bash
+gcloud run services add-iam-policy-binding las-vegas-agent \
+  --region us-central1 \
+  --member="user:$YOUR_EMAIL" \
+  --role="roles/run.invoker" \
+  --project $PROJECT_ID
 ```
 
 ## Configuring as a Remote Subagent
 
 To use this agent as a remote subagent in another project (like
-`terminal-velocity`), follow the steps to configure a remote agent in the
-[terminal-velocity repository](https://github.com/dekwan/terminal-velocity/tree/main/tasks-with-subagents).
+`gemini-cli-remote-agent`), follow the steps to configure a remote agent in the
+[gemini-cli-remote-agent repository](https://github.com/gitrey/gemini-cli-remote-agent).
 
 This allows the Gemini CLI to discover the agent and route requests to it when
 you use the `@las-vegas-agent` mention in prompts.
