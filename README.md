@@ -1,7 +1,7 @@
 # Las Vegas Concierge Agent
 
 A specialized AI agent acting as a Las Vegas expert concierge, powered by Gemini
-2.0 Flash and the Google Agent Development Kit (ADK). This agent is designed to
+3.1 Flash and the Google Agent Development Kit (ADK). This agent is designed to
 assist users with information about hotels, entertainment, restaurants, and
 walking times on the Las Vegas Strip, with specific expertise in the Mandalay
 Bay complex.
